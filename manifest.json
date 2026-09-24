@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Clearstream",
   "version": "1.3.0",
-  "description": "Kick.com yayınlarındaki video ve banner reklamlarını engeller. Kick ile resmi bir bağlantısı yoktur.",
+  "description": "Kick yayınlarındaki video ve banner reklamlarını engeller.",
   "permissions": ["declarativeNetRequest", "declarativeNetRequestFeedback", "storage", "tabs"],
   "host_permissions": ["*://*.kick.com/*"],
   "background": { "service_worker": "background.js" },

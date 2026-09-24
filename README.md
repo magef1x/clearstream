@@ -1,59 +1,30 @@
 # Clearstream
 
-Kick.com yayınlarındaki video (pre-roll / mid-roll) ve banner reklamlarını engelleyen hafif bir Chrome eklentisi.
-Sadece kick.com üzerinde çalışır, başka sitelere dokunmaz, hiçbir veri toplamaz.
+Kick için reklam engelleyici. Video reklamları ve banner'ları engeller.
 
-> Bağımsız bir projedir. Kick ile resmi bir bağlantısı yoktur ve Kick tarafından desteklenmez. "Kick" adı sahibine aittir.
-
-## Özellikler
-
-- Video reklamları engeller: oynatıcı reklam yükleyemez ve yayına direkt geçer
-- Banner ve reklam ağı isteklerini engeller (Google Ad Manager, Criteo, OpenX, Amazon vb.)
-- Reklamdan geriye kalan boş kutuları gizler
-- Menüde **aç/kapa butonu** ve **engellenen istek sayacı**
+**[İndir](https://github.com/magef1x/clearstream/releases/latest/download/clearstream.zip)**
 
 ## Kurulum
 
-### [⬇️ Clearstream'i indir (zip)](https://github.com/magef1x/clearstream/releases/latest/download/clearstream.zip)
+1. Zip'i indirip klasöre çıkar
+2. Tarayıcının eklentiler sayfasını aç ve geliştirici modunu aç
+   - Chrome: `chrome://extensions`
+   - Edge: `edge://extensions`
+   - Brave: `brave://extensions`
+   - Opera: `opera://extensions`
+3. "Paketlenmemiş öğe yükle" ile `clearstream` klasörünü seç
+4. Kick'i yenile
 
-1. Yukarıdaki linkten zip'i indir ve çıkar (sağ tık → **Tümünü ayıkla**).
-   İçinden `clearstream` klasörü çıkacak.
-2. Chrome'da `chrome://extensions` sayfasını aç
-   (Edge: `edge://extensions`, Brave: `brave://extensions`)
-3. Sağ üstten **Geliştirici modu**nu aç
-4. **Paketlenmemiş öğe yükle** butonuna bas ve `clearstream` klasörünü seç
-5. Kick sekmesini yenile
+Klasörü silersen eklenti de kaldırılır.
 
-> Klasörü kalıcı bir yere koy (ör. Belgeler). Chrome eklentiyi o klasörden çalıştırır,
-> klasör silinirse eklenti de kaybolur.
+## Güncelleme
 
-### Güncelleme
+Eklenti menüsünde ⚙ > "Güncellemeleri kontrol et". Yeni sürüm varsa zip'i indirip eski klasörün üzerine yaz, sonra eklentiler sayfasında eklentiyi yenile.
 
-Yeni sürümü aynı linkten indir, eski `clearstream` klasörünün üzerine yaz,
-sonra `chrome://extensions` sayfasında eklentinin yenile (⟳) butonuna bas.
+## Sorun
 
-## Nasıl çalışır?
-
-| Dosya | Görevi |
-|---|---|
-| `rules.json` | Reklam alan adlarına giden istekleri Chrome'un `declarativeNetRequest` API'si ile engeller |
-| `content.css` | Reklamdan boş kalan alanları gizler |
-| `content.js` | Oynatıcı bir şekilde reklam moduna girerse yayına geri döndürür |
-| `background.js` | Engellenen istekleri sayar, aç/kapa durumunu uygular |
-| `popup.*` | Eklenti menüsü |
-
-Sayaç "reklam" değil "istek" sayar. Tek bir reklam birden fazla istek yapabilir.
-
-## Reklam tekrar çıkmaya başladıysa
-
-Kick yeni bir reklam sağlayıcısı eklemiş olabilir. [Issue aç](https://github.com/magef1x/clearstream/issues)
-ya da yeni alan adını `rules.json` içindeki `requestDomains` listesine ekleyip PR gönder.
-
-## Lisans
-
-[MIT](LICENSE)
+Reklam tekrar çıkmaya başladıysa [issue açabilirsin](https://github.com/magef1x/clearstream/issues).
 
 ---
 
-**English:** Clearstream is a lightweight Chrome extension that blocks video and banner ads on Kick.com.
-Install via `chrome://extensions` → Developer mode → *Load unpacked*. Independent project, not affiliated with or endorsed by Kick.
+Kick ile bağlantılı değildir. [MIT](LICENSE)
