@@ -1,5 +1,11 @@
 # Clearstream
 
+[![Release](https://img.shields.io/github/v/release/magef1x/clearstream)](https://github.com/magef1x/clearstream/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/magef1x/clearstream/total)](https://github.com/magef1x/clearstream/releases)
+[![Validate](https://github.com/magef1x/clearstream/actions/workflows/validate.yml/badge.svg)](https://github.com/magef1x/clearstream/actions/workflows/validate.yml)
+[![CodeQL](https://github.com/magef1x/clearstream/actions/workflows/codeql.yml/badge.svg)](https://github.com/magef1x/clearstream/actions/workflows/codeql.yml)
+[![License](https://img.shields.io/github/license/magef1x/clearstream)](LICENSE)
+
 [Türkçe](README.tr.md)
 
 Ad blocker for Kick. Blocks video ads and banners.
@@ -24,6 +30,18 @@ The extension uses your browser language (English or Turkish). You can change it
 ## Updating
 
 In the extension menu, go to ⚙ > "Check for updates". If there's a new version, download the zip, extract it over the old folder, then reload the extension on the extensions page.
+
+## Permissions
+
+| Permission | Why |
+|---|---|
+| Access to kick.com | The only site it runs on |
+| `declarativeNetRequest` | Blocks ad requests |
+| `declarativeNetRequestFeedback` | Counts blocked requests for the counter |
+| `storage` | Saves on/off, the counter and your language |
+| `tabs` | Shows the count for the current tab and the "Refresh" link |
+
+It doesn't collect any data or download code from the internet. The only request it makes on its own is to the GitHub API when you click "Check for updates".
 
 ## Issues
 
