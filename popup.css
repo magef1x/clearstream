@@ -52,9 +52,45 @@ body.off .status { color: var(--muted); }
 body.off .num { color: var(--muted); }
 .hint { margin: 6px 0 0; text-align: center; color: var(--muted); font-size: 11px; }
 
-footer { margin-top: 12px; }
-button {
-  width: 100%; padding: 7px; border: 0; border-radius: 6px;
-  background: var(--panel); color: var(--muted); font: inherit; cursor: pointer;
+[hidden] { display: none !important; }
+
+.icon-btn {
+  display: grid; place-items: center;
+  width: 26px; height: 26px; padding: 0; border: 0; border-radius: 6px;
+  background: transparent; color: var(--muted); font-size: 16px; cursor: pointer;
 }
-button:hover { color: var(--text); background: #24272c; }
+.icon-btn:hover, .icon-btn.active { background: var(--panel); color: var(--text); }
+.icon-btn:focus-visible, .btn:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+#settings-view { margin-top: 12px; }
+h2 { margin: 0 0 10px; font-size: 13px; font-weight: 600; }
+.setting { padding: 10px; border-radius: 8px; background: var(--panel); }
+.setting-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.muted { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.btn {
+  width: 100%; padding: 7px; border: 0; border-radius: 6px;
+  background: #2a2d33; color: var(--text); font: inherit; cursor: pointer;
+}
+.btn:hover:not(:disabled) { background: #34373e; }
+.btn:disabled { color: var(--muted); cursor: default; }
+
+.check-result { margin: 8px 0 0; font-size: 12px; min-height: 0; }
+.check-result:empty { display: none; }
+.check-result.ok, .check-result.new { color: var(--green); }
+.check-result.error { color: #ff6b6b; }
+
+.link {
+  display: block; margin-top: 10px; text-align: center;
+  color: var(--muted); font-size: 11px; text-decoration: none;
+}
+.link:hover { color: var(--text); }
+
+.update {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  margin: -2px 0 12px; padding: 8px 10px; border-radius: 8px;
+  background: var(--green); color: #000; font-size: 12px; text-decoration: none;
+}
+.update[hidden] { display: none; }
+.update-cta { font-weight: 700; white-space: nowrap; }
+.update:hover .update-cta { text-decoration: underline; }
