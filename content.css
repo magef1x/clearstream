@@ -1,0 +1,14 @@
+/* Eklenti kapalıyken <html> üzerinde .clearstream-off olur ve hiçbir şey gizlenmez */
+/* Kanal sayfasındaki üst banner (masthead) ve Google reklam slotları */
+html:not(.clearstream-off) [id^="channel-masthead"],
+html:not(.clearstream-off) [id^="google_ads_iframe"],
+html:not(.clearstream-off) [id^="div-gpt-ad"],
+html:not(.clearstream-off) iframe[src*="googlesyndication.com"],
+html:not(.clearstream-off) iframe[src*="doubleclick.net"],
+html:not(.clearstream-off) ins.adsbygoogle,
+/* Video oynatıcıdaki IMA reklam katmanı */
+html:not(.clearstream-off) .ima-ad-container,
+html:not(.clearstream-off) .vjs-ima-ad-container,
+html:not(.clearstream-off) .vjs-ad-loading .vjs-loading-spinner {
+  display: none !important;
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "initiatorDomains": ["kick.com"],
+      "requestDomains": [
+        "imasdk.googleapis.com",
+        "pagead2.googlesyndication.com",
+        "tpc.googlesyndication.com",
+        "safeframe.googlesyndication.com",
+        "googlesyndication.com",
+        "securepubads.g.doubleclick.net",
+        "pubads.g.doubleclick.net",
+        "doubleclick.net",
+        "googleadservices.com",
+        "googletagservices.com",
+        "adtrafficquality.google",
+        "criteo.com",
+        "criteo.net",
+        "openx.net",
+        "openxcdn.net",
+        "creativecdn.com",
+        "amazon-adsystem.com",
+        "adnxs.com",
+        "rubiconproject.com",
+        "pubmatic.com",
+        "casalemedia.com",
+        "taboola.com",
+        "outbrain.com",
+        "connectid.analytics.yahoo.com",
+        "ups.analytics.yahoo.com"
+      ],
+      "resourceTypes": [
+        "script", "sub_frame", "xmlhttprequest", "image",
+        "media", "ping", "other", "stylesheet", "font", "websocket"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": { "type": "block" },
+    "condition": {
+      "urlFilter": "||cdn.jsdelivr.net/gh/prebid/",
+      "initiatorDomains": ["kick.com"]
+    }
+  }
+]

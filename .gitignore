@@ -1,0 +1,5 @@
+# Chrome'un paketlenmemiş eklentiler için ürettiği klasör
+_metadata/
+*.zip
+*.crx
+*.pem

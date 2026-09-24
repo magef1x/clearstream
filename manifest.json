@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Clearstream",
+  "version": "1.2.0",
+  "description": "Kick.com yayınlarındaki video ve banner reklamlarını engeller. Kick ile resmi bir bağlantısı yoktur.",
+  "permissions": ["declarativeNetRequest", "declarativeNetRequestFeedback", "storage", "tabs"],
+  "host_permissions": ["*://*.kick.com/*"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "Clearstream" },
+  "declarative_net_request": {
+    "rule_resources": [
+      { "id": "ads", "enabled": true, "path": "rules.json" }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://kick.com/*", "*://*.kick.com/*"],
+      "css": ["content.css"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

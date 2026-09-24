@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <span class="logo">C</span>
+    <h1>Clearstream</h1>
+    <label class="switch" title="Aç / Kapat">
+      <input type="checkbox" id="toggle">
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <p class="status" id="status">Koruma açık</p>
+
+  <section class="stats">
+    <div class="stat">
+      <span class="num" id="tab">0</span>
+      <span class="label">Bu sayfada</span>
+    </div>
+    <div class="stat">
+      <span class="num" id="total">0</span>
+      <span class="label">Toplam</span>
+    </div>
+  </section>
+  <p class="hint">Engellenen reklam isteği</p>
+
+  <footer>
+    <button id="reset">Sayacı sıfırla</button>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
