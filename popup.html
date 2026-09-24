@@ -1,54 +1,58 @@
 <!doctype html>
-<html lang="tr">
+<html>
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <a class="update" id="update" hidden target="_blank">
-    <span>Yeni sürüm çıktı: <b id="update-version"></b></span>
-    <span class="update-cta">İndir ↓</span>
+    <span><span data-i18n="newVersion"></span> <b id="update-version"></b></span>
+    <span class="update-cta" data-i18n="download"></span>
   </a>
 
   <header>
-    <span class="logo">C</span>
     <h1>Clearstream</h1>
-    <button class="icon-btn" id="settings-btn" title="Ayarlar" aria-label="Ayarlar">⚙</button>
-    <label class="switch" title="Aç / Kapat">
+    <button class="icon-btn" id="settings-btn" data-i18n-title="settings" data-i18n-aria-label="settings">⚙</button>
+    <label class="switch" data-i18n-title="toggleTitle">
       <input type="checkbox" id="toggle">
       <span class="slider"></span>
     </label>
   </header>
 
   <main id="main-view">
-    <p class="status" id="status">Koruma açık</p>
+    <p class="status" id="status"></p>
 
     <section class="stats">
       <div class="stat">
         <span class="num" id="tab">0</span>
-        <span class="label">Bu sayfada</span>
+        <span class="label" data-i18n="thisPage"></span>
       </div>
       <div class="stat">
         <span class="num" id="total">0</span>
-        <span class="label">Toplam</span>
+        <span class="label" data-i18n="total"></span>
       </div>
     </section>
-    <p class="hint">Engellenen reklam isteği</p>
+    <p class="hint" data-i18n="blockedRequests"></p>
+
+    <p class="reload-hint" id="reload-hint" hidden>
+      <span data-i18n="reloadHint"></span>
+      <button class="text-btn" id="reload-btn" data-i18n="reloadPage"></button>
+    </p>
   </main>
 
   <section id="settings-view" hidden>
-    <h2>Ayarlar</h2>
+    <h2 data-i18n="settings"></h2>
 
     <div class="setting">
       <div class="setting-row">
-        <span>Sürüm</span>
+        <span data-i18n="version"></span>
         <span class="muted" id="version"></span>
       </div>
-      <button class="btn" id="check-update">Güncellemeleri kontrol et</button>
+      <button class="btn" id="check-update" data-i18n="checkUpdates"></button>
       <p class="check-result" id="check-result" aria-live="polite"></p>
     </div>
 
-    <a class="link" target="_blank" href="https://github.com/magef1x/clearstream">GitHub sayfası ↗</a>
+    <a class="link" target="_blank" href="https://github.com/magef1x/clearstream" data-i18n="githubPage"></a>
   </section>
 
   <script src="popup.js"></script>

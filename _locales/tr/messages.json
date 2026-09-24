@@ -1,0 +1,22 @@
+{
+  "extDescription": { "message": "Kick yayınlarındaki video ve banner reklamlarını engeller." },
+  "protectionOn": { "message": "Koruma açık" },
+  "protectionOff": { "message": "Koruma kapalı" },
+  "toggleTitle": { "message": "Aç / Kapat" },
+  "thisPage": { "message": "Bu sayfada" },
+  "total": { "message": "Toplam" },
+  "blockedRequests": { "message": "Engellenen reklam isteği" },
+  "settings": { "message": "Ayarlar" },
+  "version": { "message": "Sürüm" },
+  "checkUpdates": { "message": "Güncellemeleri kontrol et" },
+  "checking": { "message": "Kontrol ediliyor…" },
+  "upToDate": { "message": "En güncel sürümü kullanıyorsun ✓" },
+  "updateFound": { "message": "v$VERSION$ çıkmış, yukarıdaki banttan indirebilirsin.", "placeholders": {"version": {"content": "$1" }}},
+  "updateError": { "message": "GitHub'a ulaşılamadı, sonra tekrar dene." },
+  "newVersion": { "message": "Yeni sürüm çıktı:" },
+  "download": { "message": "İndir ↓" },
+  "whatsNew": { "message": "Neler yeni:" },
+  "githubPage": { "message": "GitHub sayfası ↗" },
+  "reloadHint": { "message": "Tam etki için sayfayı yenile" },
+  "reloadPage": { "message": "Yenile" }
+}

@@ -1,8 +1,8 @@
-// Engellenen istekleri sayar, açma/kapama durumunu uygular, istenince güncelleme kontrol eder.
-// onRuleMatchedDebug sadece paketlenmemiş (geliştirici modu) eklentilerde çalışır.
+// Counts blocked requests, applies the on/off state and checks for updates on request.
+// onRuleMatchedDebug only fires for unpacked (developer mode) extensions.
 
-// Chrome bu script'i ~30 sn boşta kalınca durdurur, bellekteki her şey silinir.
-// Bu yüzden sekme sayaçları storage.session'da (tarayıcı kapanana kadar), toplam storage.local'da tutulur.
+// Chrome stops this worker after ~30s idle and everything in memory is lost,
+// so per-tab counts live in storage.session (until the browser closes) and the total in storage.local.
 let tabCounts = {};
 let pendingTotal = 0;
 let flushTimer = null;
@@ -41,7 +41,7 @@ chrome.declarativeNetRequest.onRuleMatchedDebug?.addListener(async ({ request })
   scheduleFlush();
 });
 
-// Sayfa yenilenince / başka sayfaya geçince sekme sayacını sıfırla
+// Reset the tab count on reload / navigation
 chrome.tabs.onUpdated.addListener(async (tabId, info) => {
   if (info.status === 'loading' && info.url) {
     await ready;
@@ -70,12 +70,12 @@ chrome.runtime.onStartup.addListener(() => {
   chrome.storage.local.get({ enabled: true }, ({ enabled }) => applyEnabled(enabled));
 });
 
-// --- Güncelleme kontrolü: sadece kullanıcı ayarlardan butona basınca çalışır ---
+// --- Update check: only runs when the user clicks the button in settings ---
 
 const RELEASE_API = 'https://api.github.com/repos/magef1x/clearstream/releases/latest';
 const CURRENT_VERSION = chrome.runtime.getManifest().version;
 
-// "1.10.0" > "1.9.2" gibi sürümleri sayı sayı karşılaştırır
+// Compares versions part by part, so "1.10.0" > "1.9.2"
 function isNewer(latest, current) {
   const a = latest.split('.').map(Number);
   const b = current.split('.').map(Number);
@@ -90,7 +90,7 @@ async function checkForUpdate() {
   if (!res.ok) throw new Error(`GitHub ${res.status}`);
   const release = await res.json();
   const zip = release.assets?.find((a) => a.name.endsWith('.zip'));
-  // Bulunan sürüm saklanır ki menü her açıldığında yeniden istek atmadan bant gösterilsin
+  // Saved so the popup can show the banner without making a new request
   await chrome.storage.local.set({
     update: {
       version: release.tag_name.replace(/^v/, ''),

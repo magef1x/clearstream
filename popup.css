@@ -16,13 +16,7 @@ body {
   font: 13px/1.4 system-ui, "Segoe UI", sans-serif;
 }
 header { display: flex; align-items: center; gap: 8px; }
-.logo {
-  display: grid; place-items: center;
-  width: 24px; height: 24px; border-radius: 6px;
-  background: var(--green); color: #000; font-weight: 800;
-}
-body.off .logo { background: var(--off); color: var(--text); }
-h1 { flex: 1; margin: 0; font-size: 14px; font-weight: 600; }
+h1 { flex: 1; margin: 0; font-size: 15px; font-weight: 700; }
 
 .switch { position: relative; width: 38px; height: 22px; cursor: pointer; }
 .switch input { opacity: 0; width: 0; height: 0; }
@@ -53,6 +47,23 @@ body.off .num { color: var(--muted); }
 .hint { margin: 6px 0 0; text-align: center; color: var(--muted); font-size: 11px; }
 
 [hidden] { display: none !important; }
+
+.stale {
+  margin: 0; padding: 12px; border-radius: 8px;
+  background: var(--panel); color: var(--text); font-size: 12px;
+}
+
+.reload-hint {
+  display: flex; align-items: center; justify-content: space-between; gap: 6px;
+  margin: 10px 0 0; padding: 7px 10px; border-radius: 8px;
+  background: var(--panel); color: var(--muted); font-size: 11px;
+}
+.text-btn {
+  padding: 0; border: 0; background: none; color: var(--green);
+  font: inherit; font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+.text-btn:hover { text-decoration: underline; }
+.text-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
 
 .icon-btn {
   display: grid; place-items: center;
@@ -91,6 +102,5 @@ h2 { margin: 0 0 10px; font-size: 13px; font-weight: 600; }
   margin: -2px 0 12px; padding: 8px 10px; border-radius: 8px;
   background: var(--green); color: #000; font-size: 12px; text-decoration: none;
 }
-.update[hidden] { display: none; }
 .update-cta { font-weight: 700; white-space: nowrap; }
 .update:hover .update-cta { text-decoration: underline; }

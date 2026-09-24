@@ -1,5 +1,5 @@
-// Ağ kuralları reklamların büyük kısmını engelliyor. Bu script, yine de
-// araya giren bir reklam arayüzü olursa oynatıcıyı içeriğe geri döndürür.
+// Network rules block most ads. If an ad UI still slips through,
+// this script puts the player back on the stream.
 (() => {
   const AD_CLASSES = ['vjs-ad-playing', 'vjs-ad-loading', 'vjs-ad-content-resuming'];
 
@@ -13,7 +13,7 @@
     document.querySelectorAll('.ima-ad-container, [id^="google_ads_iframe"]').forEach((el) => el.remove());
   }
 
-  // Chat sürekli DOM değiştirdiği için kareye en fazla bir kez çalıştır
+  // Chat mutates the DOM constantly, so run at most once per frame
   let scheduled = false;
   const observer = new MutationObserver(() => {
     if (scheduled) return;
@@ -23,7 +23,12 @@
       cleanPlayers();
     });
   });
-  const start = () => {
+  function apply(enabled) {
+    document.documentElement.classList.toggle('clearstream-off', !enabled);
+    if (!enabled) {
+      observer.disconnect();
+      return;
+    }
     observer.observe(document.documentElement, {
       childList: true,
       subtree: true,
@@ -31,13 +36,12 @@
       attributeFilter: ['class'],
     });
     cleanPlayers();
-  };
+  }
 
-  chrome.storage.local.get({ enabled: true }, ({ enabled }) => {
-    if (!enabled) {
-      document.documentElement.classList.add('clearstream-off');
-      return;
-    }
-    start();
+  chrome.storage.local.get({ enabled: true }, ({ enabled }) => apply(enabled));
+
+  // Toggling from the popup applies right away, no reload needed
+  chrome.storage.onChanged.addListener((changes, area) => {
+    if (area === 'local' && changes.enabled) apply(changes.enabled.newValue);
   });
 })();

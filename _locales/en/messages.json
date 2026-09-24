@@ -1,0 +1,22 @@
+{
+  "extDescription": { "message": "Blocks video and banner ads on Kick streams." },
+  "protectionOn": { "message": "Protection on" },
+  "protectionOff": { "message": "Protection off" },
+  "toggleTitle": { "message": "Turn on / off" },
+  "thisPage": { "message": "This page" },
+  "total": { "message": "Total" },
+  "blockedRequests": { "message": "Blocked ad requests" },
+  "settings": { "message": "Settings" },
+  "version": { "message": "Version" },
+  "checkUpdates": { "message": "Check for updates" },
+  "checking": { "message": "Checking…" },
+  "upToDate": { "message": "You're on the latest version ✓" },
+  "updateFound": { "message": "v$VERSION$ is out, download it from the banner above.", "placeholders": {"version": {"content": "$1" }}},
+  "updateError": { "message": "Couldn't reach GitHub, try again later." },
+  "newVersion": { "message": "New version available:" },
+  "download": { "message": "Download ↓" },
+  "whatsNew": { "message": "What's new:" },
+  "githubPage": { "message": "GitHub page ↗" },
+  "reloadHint": { "message": "Refresh for it to fully apply" },
+  "reloadPage": { "message": "Refresh" }
+}

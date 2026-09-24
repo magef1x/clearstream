@@ -1,30 +1,34 @@
 # Clearstream
 
-Kick için reklam engelleyici. Video reklamları ve banner'ları engeller.
+[Türkçe](README.tr.md)
 
-**[İndir](https://github.com/magef1x/clearstream/releases/latest/download/clearstream.zip)**
+Ad blocker for Kick. Blocks video ads and banners.
 
-## Kurulum
+**[Download](https://github.com/magef1x/clearstream/releases/latest/download/clearstream.zip)**
 
-1. Zip'i indirip klasöre çıkar
-2. Tarayıcının eklentiler sayfasını aç ve geliştirici modunu aç
+## Install
+
+1. Download the zip and extract it
+2. Open your browser's extensions page and turn on developer mode
    - Chrome: `chrome://extensions`
    - Edge: `edge://extensions`
    - Brave: `brave://extensions`
    - Opera: `opera://extensions`
-3. "Paketlenmemiş öğe yükle" ile `clearstream` klasörünü seç
-4. Kick'i yenile
+3. Click "Load unpacked" and select the `clearstream` folder
+4. Refresh Kick
 
-Klasörü silersen eklenti de kaldırılır.
+If you delete the folder, the extension is removed too.
 
-## Güncelleme
+The extension uses your browser language (English or Turkish).
 
-Eklenti menüsünde ⚙ > "Güncellemeleri kontrol et". Yeni sürüm varsa zip'i indirip eski klasörün üzerine yaz, sonra eklentiler sayfasında eklentiyi yenile.
+## Updating
 
-## Sorun
+In the extension menu, go to ⚙ > "Check for updates". If there's a new version, download the zip, extract it over the old folder, then reload the extension on the extensions page.
 
-Reklam tekrar çıkmaya başladıysa [issue açabilirsin](https://github.com/magef1x/clearstream/issues).
+## Issues
+
+If ads start showing up again, [open an issue](https://github.com/magef1x/clearstream/issues).
 
 ---
 
-Kick ile bağlantılı değildir. [MIT](LICENSE)
+Not affiliated with Kick. [MIT](LICENSE)
