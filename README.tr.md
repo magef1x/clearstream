@@ -19,7 +19,7 @@ Kick için reklam engelleyici. Video reklamları ve banner'ları engeller.
 
 Klasörü silersen eklenti de kaldırılır.
 
-Eklenti tarayıcının diline göre otomatik olarak Türkçe veya İngilizce açılır.
+Eklenti tarayıcının diline göre Türkçe veya İngilizce açılır. Dili ⚙ ayarlarından değiştirebilirsin.
 
 ## Güncelleme
 

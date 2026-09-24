@@ -11,7 +11,10 @@
   "checkUpdates": { "message": "Güncellemeleri kontrol et" },
   "checking": { "message": "Kontrol ediliyor…" },
   "upToDate": { "message": "En güncel sürümü kullanıyorsun ✓" },
-  "updateFound": { "message": "v$VERSION$ çıkmış, yukarıdaki banttan indirebilirsin.", "placeholders": {"version": {"content": "$1" }}},
+  "updateFound": {
+    "message": "v$VERSION$ çıkmış, yukarıdaki banttan indirebilirsin.",
+    "placeholders": { "version": { "content": "$1" } }
+  },
   "updateError": { "message": "GitHub'a ulaşılamadı, sonra tekrar dene." },
   "newVersion": { "message": "Yeni sürüm çıktı:" },
   "download": { "message": "İndir ↓" },
@@ -20,5 +23,7 @@
   "reloadHint": { "message": "Tam etki için sayfayı yenile" },
   "reloadPage": { "message": "Yenile" },
   "braveHelpLabel": { "message": "Brave'de sayaç neden düşük?" },
-  "braveNote": { "message": "Brave Shields açıksa reklamları Clearstream'den önce o engelleyebilir, bu yüzden sayaca yansımaz. Reklamlar yine engellenir. Gerçek sayıyı görmek için Kick'te Shields'ı kapat." }
+  "braveNote": { "message": "Brave Shields açıksa reklamları Clearstream'den önce o engelleyebilir, bu yüzden sayaca yansımaz. Reklamlar yine engellenir. Gerçek sayıyı görmek için Kick'te Shields'ı kapat." },
+  "language": { "message": "Dil" },
+  "languageAuto": { "message": "Otomatik" }
 }

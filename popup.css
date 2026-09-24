@@ -92,6 +92,13 @@ h2 { margin: 0 0 10px; font-size: 13px; font-weight: 600; }
 .setting { padding: 10px; border-radius: 8px; background: var(--panel); }
 .setting-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
 .muted { color: var(--muted); font-variant-numeric: tabular-nums; }
+.setting + .setting { margin-top: 8px; }
+label.setting-row { align-items: center; margin-bottom: 0; }
+select {
+  padding: 4px 6px; border: 0; border-radius: 6px;
+  background: #2a2d33; color: var(--text); font: inherit; cursor: pointer;
+}
+select:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
 
 .btn {
   width: 100%; padding: 7px; border: 0; border-radius: 6px;

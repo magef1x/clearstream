@@ -19,7 +19,7 @@ Ad blocker for Kick. Blocks video ads and banners.
 
 If you delete the folder, the extension is removed too.
 
-The extension uses your browser language (English or Turkish).
+The extension uses your browser language (English or Turkish). You can change it in ⚙ settings.
 
 ## Updating
 
