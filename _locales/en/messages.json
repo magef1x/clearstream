@@ -18,5 +18,7 @@
   "whatsNew": { "message": "What's new:" },
   "githubPage": { "message": "GitHub page ↗" },
   "reloadHint": { "message": "Refresh for it to fully apply" },
-  "reloadPage": { "message": "Refresh" }
+  "reloadPage": { "message": "Refresh" },
+  "braveHelpLabel": { "message": "Why is the counter low on Brave?" },
+  "braveNote": { "message": "Using Brave Shields? Shields can block ads before Clearstream sees them, so those don't show up here. Ads are still blocked. To see the real count, turn Shields off for Kick." }
 }

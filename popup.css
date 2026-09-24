@@ -44,7 +44,21 @@ body.off .status { color: var(--muted); }
 .num { font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .label { color: var(--muted); font-size: 11px; }
 body.off .num { color: var(--muted); }
-.hint { margin: 6px 0 0; text-align: center; color: var(--muted); font-size: 11px; }
+.hint {
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+  margin: 6px 0 0; color: var(--muted); font-size: 11px;
+}
+.help-btn {
+  display: grid; place-items: center;
+  width: 15px; height: 15px; padding: 0; border: 1px solid currentColor; border-radius: 50%;
+  background: none; color: var(--muted); font: 700 10px/1 system-ui, sans-serif; cursor: pointer;
+}
+.help-btn:hover, .help-btn[aria-expanded="true"] { color: var(--text); }
+.help-btn:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.brave-note {
+  margin: 8px 0 0; padding: 8px 10px; border-radius: 8px;
+  background: var(--panel); color: var(--muted); font-size: 11px; line-height: 1.45;
+}
 
 [hidden] { display: none !important; }
 

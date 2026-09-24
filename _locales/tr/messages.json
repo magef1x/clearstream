@@ -18,5 +18,7 @@
   "whatsNew": { "message": "Neler yeni:" },
   "githubPage": { "message": "GitHub sayfası ↗" },
   "reloadHint": { "message": "Tam etki için sayfayı yenile" },
-  "reloadPage": { "message": "Yenile" }
+  "reloadPage": { "message": "Yenile" },
+  "braveHelpLabel": { "message": "Brave'de sayaç neden düşük?" },
+  "braveNote": { "message": "Brave Shields açıksa reklamları Clearstream'den önce o engelleyebilir, bu yüzden sayaca yansımaz. Reklamlar yine engellenir. Gerçek sayıyı görmek için Kick'te Shields'ı kapat." }
 }

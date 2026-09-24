@@ -32,7 +32,11 @@
         <span class="label" data-i18n="total"></span>
       </div>
     </section>
-    <p class="hint" data-i18n="blockedRequests"></p>
+    <p class="hint">
+      <span data-i18n="blockedRequests"></span>
+      <button class="help-btn" id="brave-help" hidden aria-expanded="false" aria-controls="brave-note" data-i18n-aria-label="braveHelpLabel">?</button>
+    </p>
+    <p class="brave-note" id="brave-note" hidden data-i18n="braveNote"></p>
 
     <p class="reload-hint" id="reload-hint" hidden>
       <span data-i18n="reloadHint"></span>

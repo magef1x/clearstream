@@ -92,6 +92,18 @@ $('version').textContent = 'v' + chrome.runtime.getManifest().version;
 // Chrome focuses the first button when the popup opens, which draws a focus ring on ⚙
 document.activeElement?.blur();
 
+// Brave Shields blocks ad requests before extensions see them, so on Brave the
+// counter can stay at 0 even though ads are blocked. Explain that behind a "?".
+navigator.brave?.isBrave().then((isBrave) => {
+  if (isBrave) $('brave-help').hidden = false;
+});
+
+$('brave-help').addEventListener('click', () => {
+  const open = $('brave-note').hidden;
+  $('brave-note').hidden = !open;
+  $('brave-help').setAttribute('aria-expanded', String(open));
+});
+
 // Show a previously found update, if any (no new request)
 chrome.runtime.sendMessage({ type: 'getUpdate' }, showUpdate);
 
