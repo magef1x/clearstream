@@ -14,17 +14,22 @@ Sadece kick.com üzerinde çalışır, başka sitelere dokunmaz, hiçbir veri to
 
 ## Kurulum
 
-1. Sağ üstteki **Code → Download ZIP** ile indir ve bir klasöre çıkar
-   (ya da `git clone https://github.com/magef1x/clearstream`)
+### [⬇️ Clearstream'i indir (zip)](https://github.com/magef1x/clearstream/releases/latest/download/clearstream.zip)
+
+1. Yukarıdaki linkten zip'i indir ve çıkar (sağ tık → **Tümünü ayıkla**).
+   İçinden `clearstream` klasörü çıkacak.
 2. Chrome'da `chrome://extensions` sayfasını aç
    (Edge: `edge://extensions`, Brave: `brave://extensions`)
 3. Sağ üstten **Geliştirici modu**nu aç
-4. **Paketlenmemiş öğe yükle** butonuna bas ve çıkardığın klasörü seç
+4. **Paketlenmemiş öğe yükle** butonuna bas ve `clearstream` klasörünü seç
 5. Kick sekmesini yenile
+
+> Klasörü kalıcı bir yere koy (ör. Belgeler). Chrome eklentiyi o klasörden çalıştırır,
+> klasör silinirse eklenti de kaybolur.
 
 ### Güncelleme
 
-Yeni sürümü indirip aynı klasörün üzerine yaz (ya da `git pull`),
+Yeni sürümü aynı linkten indir, eski `clearstream` klasörünün üzerine yaz,
 sonra `chrome://extensions` sayfasında eklentinin yenile (⟳) butonuna bas.
 
 ## Nasıl çalışır?
