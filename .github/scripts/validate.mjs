@@ -24,6 +24,13 @@ if (manifest) {
     ...manifest.content_scripts.flatMap((c) => [...(c.js || []), ...(c.css || [])]),
   ];
   for (const f of files) if (!existsSync(f)) errors.push(`manifest.json references missing file: ${f}`);
+  // Scripts registered at runtime (e.g. the Twitch script) are listed in background.js
+  const bg = readFileSync(manifest.background.service_worker, 'utf8');
+  for (const m of bg.matchAll(/js:\s*\[([^\]]*)\]/g)) {
+    for (const f of m[1].match(/'[^']+'/g) || []) {
+      if (!existsSync(f.slice(1, -1))) errors.push(`background.js registers missing file: ${f}`);
+    }
+  }
   if (!/^\d+\.\d+\.\d+$/.test(manifest.version)) errors.push(`manifest.json: bad version "${manifest.version}"`);
 }
 

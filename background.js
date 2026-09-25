@@ -1,4 +1,5 @@
-// Counts blocked requests, applies the on/off state and checks for updates on request.
+// Counts blocked requests, applies the on/off state (Kick rules + Twitch script)
+// and checks for updates on request.
 // onRuleMatchedDebug only fires for unpacked (developer mode) extensions.
 
 // Chrome stops this worker after ~30s idle and everything in memory is lost,
@@ -63,12 +64,39 @@ async function applyEnabled(enabled) {
   chrome.action.setBadgeBackgroundColor({ color: enabled ? '#53fc18' : '#666' });
 }
 
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.local.get({ enabled: true }, ({ enabled }) => applyEnabled(enabled));
-});
-chrome.runtime.onStartup.addListener(() => {
-  chrome.storage.local.get({ enabled: true }, ({ enabled }) => applyEnabled(enabled));
-});
+// --- Twitch: Twitch stitches ads into the stream itself, so blocking requests doesn't help.
+// vaft (vendor/vaft.js, from TwitchAdSolutions) runs in the page and swaps to an ad-free
+// stream while an ad plays. It's registered dynamically so it can be switched off.
+
+const TWITCH_SCRIPT = {
+  id: 'twitch-vaft',
+  matches: ['*://*.twitch.tv/*'],
+  js: ['twitch-check.js', 'vendor/vaft.js'],
+  runAt: 'document_start',
+  world: 'MAIN',
+  persistAcrossSessions: true,
+};
+
+// Serialized so overlapping calls (startup + a popup click) can't register the script twice
+let twitchQueue = Promise.resolve();
+function applyTwitch() {
+  twitchQueue = twitchQueue.then(async () => {
+    const { enabled, twitch } = await chrome.storage.local.get({ enabled: true, twitch: true });
+    const want = enabled && twitch;
+    const registered = (await chrome.scripting.getRegisteredContentScripts({ ids: [TWITCH_SCRIPT.id] })).length > 0;
+    if (want && !registered) await chrome.scripting.registerContentScripts([TWITCH_SCRIPT]);
+    if (!want && registered) await chrome.scripting.unregisterContentScripts({ ids: [TWITCH_SCRIPT.id] });
+  }).catch((e) => console.warn('Twitch script:', e));
+  return twitchQueue;
+}
+
+async function applyAll() {
+  const { enabled } = await chrome.storage.local.get({ enabled: true });
+  await Promise.all([applyEnabled(enabled), applyTwitch()]);
+}
+
+chrome.runtime.onInstalled.addListener(applyAll);
+chrome.runtime.onStartup.addListener(applyAll);
 
 // --- Update check: only runs when the user clicks the button in settings ---
 
@@ -107,14 +135,21 @@ async function getSavedUpdate() {
 
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg.type === 'getStats') {
-    Promise.all([ready, chrome.storage.local.get({ total: 0, enabled: true })]).then(([, { total, enabled }]) => {
-      sendResponse({ total: total + pendingTotal, tab: tabCounts[msg.tabId] || 0, enabled });
+    Promise.all([ready, chrome.storage.local.get({ total: 0, enabled: true, twitch: true })]).then(([, s]) => {
+      sendResponse({ total: s.total + pendingTotal, tab: tabCounts[msg.tabId] || 0, enabled: s.enabled, twitch: s.twitch });
     });
     return true;
   }
   if (msg.type === 'setEnabled') {
-    chrome.storage.local.set({ enabled: msg.enabled });
-    applyEnabled(msg.enabled).then(() => sendResponse({ ok: true }));
+    chrome.storage.local.set({ enabled: msg.enabled })
+      .then(applyAll)
+      .then(() => sendResponse({ ok: true }));
+    return true;
+  }
+  if (msg.type === 'setTwitch') {
+    chrome.storage.local.set({ twitch: msg.twitch })
+      .then(applyTwitch)
+      .then(() => sendResponse({ ok: true }));
     return true;
   }
   if (msg.type === 'getUpdate') {

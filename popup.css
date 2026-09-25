@@ -62,6 +62,11 @@ body.off .num { color: var(--muted); }
 
 [hidden] { display: none !important; }
 
+.warning {
+  margin: 10px 0 0; padding: 8px 10px; border-radius: 8px;
+  background: rgba(255, 176, 32, 0.12); color: #ffb020; font-size: 11px; line-height: 1.45;
+}
+
 .stale {
   margin: 0; padding: 12px; border-radius: 8px;
   background: var(--panel); color: var(--text); font-size: 12px;
@@ -93,7 +98,11 @@ h2 { margin: 0 0 10px; font-size: 13px; font-weight: 600; }
 .setting-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
 .muted { color: var(--muted); font-variant-numeric: tabular-nums; }
 .setting + .setting { margin-top: 8px; }
-label.setting-row { align-items: center; margin-bottom: 0; }
+label.setting-row { align-items: center; margin-bottom: 0; gap: 8px; cursor: pointer; }
+.setting-note { margin: 6px 0 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+.switch.small { flex-shrink: 0; width: 32px; height: 18px; }
+.switch.small .slider::before { width: 12px; height: 12px; }
+.switch.small input:checked + .slider::before { transform: translateX(14px); }
 select {
   padding: 4px 6px; border: 0; border-radius: 6px;
   background: #2a2d33; color: var(--text); font: inherit; cursor: pointer;

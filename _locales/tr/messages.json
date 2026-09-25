@@ -1,5 +1,5 @@
 {
-  "extDescription": { "message": "Kick yayınlarındaki video ve banner reklamlarını engeller." },
+  "extDescription": { "message": "Kick'teki video ve banner reklamlarını, Twitch'teki video reklamlarını engeller." },
   "protectionOn": { "message": "Koruma açık" },
   "protectionOff": { "message": "Koruma kapalı" },
   "toggleTitle": { "message": "Aç / Kapat" },
@@ -25,5 +25,9 @@
   "braveHelpLabel": { "message": "Brave'de sayaç neden düşük?" },
   "braveNote": { "message": "Brave Shields açıksa reklamları Clearstream'den önce o engelleyebilir, bu yüzden sayaca yansımaz. Reklamlar yine engellenir. Gerçek sayıyı görmek için Kick'te Shields'ı kapat." },
   "language": { "message": "Dil" },
-  "languageAuto": { "message": "Otomatik" }
+  "languageAuto": { "message": "Otomatik" },
+  "twitchSetting": { "message": "Twitch reklamlarını engelle (deneysel)" },
+  "twitchNote": { "message": "TwitchAdSolutions'ın vaft script'ini kullanır. Değiştirdikten sonra Twitch'i yenile. Başka bir Twitch reklam engelleyiciyle birlikte kullanma." },
+  "conflictVaft": { "message": "Twitch'te vaft'ın başka bir kopyası çalışıyor (muhtemelen uBlock Origin ya da bir userscript üzerinden). Clearstream zaten içeriyor, diğerini kaldır." },
+  "conflictOther": { "message": "Başka bir Twitch reklam engelleyici çalışıyor. İkisi birlikte oynatıcıyı bozabilir, birini kapat." }
 }

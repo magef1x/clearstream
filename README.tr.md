@@ -8,7 +8,7 @@
 
 [English](README.md)
 
-Kick için reklam engelleyici. Video reklamları ve banner'ları engeller.
+Kick ve Twitch için reklam engelleyici. Kick'te video reklamları ve banner'ları, Twitch'te video reklamları engeller (deneysel).
 
 **[İndir](https://github.com/magef1x/clearstream/releases/latest/download/clearstream.zip)**
 
@@ -21,7 +21,7 @@ Kick için reklam engelleyici. Video reklamları ve banner'ları engeller.
    - Brave: `brave://extensions`
    - Opera: `opera://extensions`
 3. "Paketlenmemiş öğe yükle" ile `clearstream` klasörünü seç
-4. Kick'i yenile
+4. Kick'i ya da Twitch'i yenile
 
 Klasörü silersen eklenti de kaldırılır.
 
@@ -35,13 +35,20 @@ Eklenti menüsünde ⚙ > "Güncellemeleri kontrol et". Yeni sürüm varsa zip'i
 
 | İzin | Neden |
 |---|---|
-| kick.com erişimi | Çalıştığı tek site |
+| kick.com ve twitch.tv erişimi | Çalıştığı tek siteler |
 | `declarativeNetRequest` | Reklam isteklerini engeller |
 | `declarativeNetRequestFeedback` | Sayaç için engellenen istekleri sayar |
 | `storage` | Aç/kapa durumunu, sayacı ve dil seçimini kaydeder |
 | `tabs` | Açık sekmenin sayısını ve "Yenile" linkini gösterir |
+| `scripting` | Twitch script'ini açıp kapatır |
 
-Hiçbir veri toplamaz, internetten kod indirmez. Kendi başına yaptığı tek istek, "Güncellemeleri kontrol et"e bastığında GitHub API'ye gider.
+Hiçbir veri toplamaz, internetten kod indirmez. Twitch'te reklam engelleme script'i sadece Twitch'in kendi sunucularıyla konuşur. Bunun dışında yaptığı tek istek, "Güncellemeleri kontrol et"e bastığında GitHub API'ye gider.
+
+## Twitch
+
+Twitch reklamları yayının içine gömüyor, bu yüzden reklam sunucularını engellemek orada işe yaramıyor. Clearstream bunun için [vaft](https://github.com/pixeltris/TwitchAdSolutions) kullanıyor: reklam başlayınca reklam bitene kadar yayının reklamsız kopyasına geçiyor. Birkaç saniye kalite düşebilir, reklam bitince oynatıcı bir kez yeniden yüklenir.
+
+Deneysel bir özellik, ⚙ ayarlarından kapatılabilir. Başka bir Twitch reklam engelleyiciyle birlikte kullanma. Clearstream böyle birini fark ederse menüde uyarı gösterir.
 
 ## Sorun
 
@@ -49,4 +56,6 @@ Reklam tekrar çıkmaya başladıysa [issue açabilirsin](https://github.com/mag
 
 ---
 
-Kick ile bağlantılı değildir. [MIT](LICENSE)
+Kick ya da Twitch ile bağlantılı değildir. [MIT](LICENSE)
+
+Twitch reklam engelleme, [TwitchAdSolutions](https://github.com/pixeltris/TwitchAdSolutions) katkıcılarının vaft script'ini kullanır. Script değiştirilmeden MIT lisansıyla eklenmiştir ([vendor/LICENSE-vaft](vendor/LICENSE-vaft)).

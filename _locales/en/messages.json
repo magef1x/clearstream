@@ -1,5 +1,5 @@
 {
-  "extDescription": { "message": "Blocks video and banner ads on Kick streams." },
+  "extDescription": { "message": "Blocks video and banner ads on Kick, and video ads on Twitch." },
   "protectionOn": { "message": "Protection on" },
   "protectionOff": { "message": "Protection off" },
   "toggleTitle": { "message": "Turn on / off" },
@@ -25,5 +25,9 @@
   "braveHelpLabel": { "message": "Why is the counter low on Brave?" },
   "braveNote": { "message": "Using Brave Shields? Shields can block ads before Clearstream sees them, so those don't show up here. Ads are still blocked. To see the real count, turn Shields off for Kick." },
   "language": { "message": "Language" },
-  "languageAuto": { "message": "Automatic" }
+  "languageAuto": { "message": "Automatic" },
+  "twitchSetting": { "message": "Block Twitch ads (experimental)" },
+  "twitchNote": { "message": "Uses vaft from TwitchAdSolutions. Refresh Twitch after changing this. Don't use it together with another Twitch ad blocker." },
+  "conflictVaft": { "message": "Another copy of vaft is running on Twitch (probably through uBlock Origin or a userscript). Clearstream already includes it, so remove the other one." },
+  "conflictOther": { "message": "Another Twitch ad blocker is running. Using two together can break the player. Turn one of them off." }
 }

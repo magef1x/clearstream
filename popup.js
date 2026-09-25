@@ -48,7 +48,8 @@ if (!t('protectionOn')) {
   throw new Error('Extension needs a reload');
 }
 
-function render({ total, tab, enabled }) {
+function render({ total, tab, enabled, twitch }) {
+  $('twitch-toggle').checked = twitch;
   $('total').textContent = fmt(total);
   $('tab').textContent = fmt(tab);
   $('toggle').checked = enabled;
@@ -76,11 +77,16 @@ $('toggle').addEventListener('change', async (e) => {
   $('reload-hint').hidden = !isKickTab();
 });
 
-const isKickTab = () => /^https?:\/\/([^/]+\.)?kick\.com\//.test(activeTab?.url || '');
+const isKickTab = () => /^https?:\/\/([^/]+\.)?(kick\.com|twitch\.tv)\//.test(activeTab?.url || '');
 
 $('reload-btn').addEventListener('click', () => {
   chrome.tabs.reload(activeTab.id);
   $('reload-hint').hidden = true;
+});
+
+$('twitch-toggle').addEventListener('change', async (e) => {
+  await chrome.runtime.sendMessage({ type: 'setTwitch', twitch: e.target.checked });
+  refresh();
 });
 
 $('settings-btn').addEventListener('click', () => {
@@ -132,12 +138,32 @@ $('brave-help').addEventListener('click', () => {
   $('brave-help').setAttribute('aria-expanded', String(open));
 });
 
+// twitch-check.js marks the page if another Twitch ad blocker ran before ours
+async function checkTwitchConflict() {
+  if (!/^https?:\/\/([^/]+\.)?twitch\.tv\//.test(activeTab?.url || '')) return;
+  try {
+    const [{ result }] = await chrome.scripting.executeScript({
+      target: { tabId: activeTab.id },
+      world: 'MAIN',
+      func: () => document.documentElement.dataset.clearstreamConflict || null,
+    });
+    if (!result) return;
+    $('twitch-conflict').dataset.kind = result;
+    $('twitch-conflict').textContent = t(result === 'vaft' ? 'conflictVaft' : 'conflictOther');
+    $('twitch-conflict').hidden = false;
+  } catch {
+    // Page not ready or not scriptable; nothing to show
+  }
+}
+
 $('language').addEventListener('change', async (e) => {
   await chrome.storage.local.set({ language: e.target.value });
   await loadLanguage(e.target.value);
   applyTranslations();
   refresh();
   $('check-result').textContent = '';
+  const kind = $('twitch-conflict').dataset.kind;
+  if (kind) $('twitch-conflict').textContent = t(kind === 'vaft' ? 'conflictVaft' : 'conflictOther');
 });
 
 chrome.storage.local.get({ language: 'auto' }, async ({ language }) => {
@@ -152,5 +178,6 @@ chrome.storage.local.get({ language: 'auto' }, async ({ language }) => {
     activeTab = tab;
     refresh();
     setInterval(refresh, 1000);
+    checkTwitchConflict();
   });
 });
